@@ -47,8 +47,10 @@ namespace stk
     template<class T>
     T Stack<T>::pop()
     {
+        Node<T>* temp = head;
         T temp_val = head->val;
         head = head->next;
+        delete temp;
         return temp_val;
     }
 
