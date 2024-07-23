@@ -1,5 +1,7 @@
 #ifndef __STACK__
 #define __STACK__
+#include "Vector.h"
+
 
 namespace stk
 {
@@ -85,6 +87,59 @@ namespace stk
         }
         return stack_size;
     }
+}
 
+namespace vtrstk
+{
+    template <class T>
+    class Stack
+    {
+        private:
+        vtr::vector<T> container;
+
+        public:
+        Stack();
+        void push(T);
+        void pop();
+        T top();
+        bool is_empty();
+        int size();
+    };
+
+    template <class T>
+    Stack<T>::Stack() {}
+
+    template <class T>
+    void Stack<T>::push(T new_val)
+    {
+        container.push_back(new_val);
+    }
+
+    template <class T>
+    void Stack<T>::pop()
+    {
+        if(!container.empty())
+            container.pop_back();
+        else
+            return;
+    }
+
+    template <class T>
+    T Stack<T>::top()
+    {
+        return container.back();
+    }
+
+    template <class T>
+    bool Stack<T>::is_empty()
+    {
+        return container.empty();
+    }
+
+    template <class T>
+    int Stack<T>::size()
+    {
+        return container.size();
+    }
 }
 #endif

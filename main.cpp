@@ -3,7 +3,7 @@
 
 int main()
 {
-    stk::Stack<int> stack;
+    vtrstk::Stack<int> stack;
     stack.push(1);
     stack.pop();
     std::cout << "Stack Empty: " << stack.is_empty() << std::endl;
@@ -21,4 +21,5 @@ int main()
         std::cout << stack.size() << std::endl;
     }
     std::cout << "Stack Empty: " << stack.is_empty() << std::endl;
+    std::cout << stack.top() << " ";
 }
