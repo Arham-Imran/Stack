@@ -23,9 +23,10 @@ namespace stk
         public:
         Stack();
         void push(T);
-        T pop();
-        T peek();
+        void pop();
+        T top();
         bool is_empty();
+        int size();
     };
 
     template<class T>
@@ -45,17 +46,20 @@ namespace stk
     }
 
     template<class T>
-    T Stack<T>::pop()
+    void Stack<T>::pop()
     {
-        Node<T>* temp = head;
-        T temp_val = head->val;
-        head = head->next;
-        delete temp;
-        return temp_val;
+        if(head == NULL)
+            return;
+        else
+        {
+            Node<T>* temp = head;
+            head = head->next;
+            delete temp;
+        }
     }
 
     template<class T>
-    T Stack<T>::peek()
+    T Stack<T>::top()
     {
         return head->val;
     }
@@ -67,6 +71,19 @@ namespace stk
             return true;
         else
             return false;
+    }
+
+    template<class T>
+    int Stack<T>::size()
+    {
+        int stack_size = 0;
+        Node<T>* temp = head;
+        while(temp != NULL)
+        {
+            stack_size++;
+            temp = temp->next;
+        }
+        return stack_size;
     }
 
 }
