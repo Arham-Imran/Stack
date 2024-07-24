@@ -63,7 +63,10 @@ namespace stk
     template<class T>
     T Stack<T>::top()
     {
-        return head->val;
+        if(head != NULL)
+            return head->val;
+        else
+            return T();
     }
 
     template<class T>
@@ -127,7 +130,10 @@ namespace vtrstk
     template <class T>
     T Stack<T>::top()
     {
-        return container.back();
+        if(!container.empty())
+            return container.back();
+        else
+            return T();
     }
 
     template <class T>
